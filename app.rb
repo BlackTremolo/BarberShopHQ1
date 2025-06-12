@@ -10,7 +10,26 @@ end
 
 class Barber < ActiveRecord::Base 
 end  
+
+before do 
+	@barbers = Barber.all
+end
+
 get '/' do
-	@barbers = Barber.all 
+	#@barbers = Barber.order 'created_at DESC'
 	erb :index
 end
+
+get '/visit' do  
+	erb :visit
+end 
+
+post '/visit' do 
+	@user_name = params[:username]
+	@phone = params[:phone]
+	@date_time = params[:datetime]
+	@barber = params[:barber]
+	@color = params[:color]
+
+	erb :visit
+end	 
