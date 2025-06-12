@@ -61,3 +61,7 @@ get '/barber/:id' do
 	erb :barber
 end
   	
+get '/bookings' do
+	@clients = Client.all 
+	erb :bookings	
+end
